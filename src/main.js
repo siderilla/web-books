@@ -24,8 +24,8 @@ service.getBookData()
 //     }
 // }
 
-//1) fate la fetch del file json e loggate l'array di libri
-//2) create la classe libro e la classe autore
+//1) fate la fetch del file json e loggate l'array di libri ----- OK
+//2) create la classe libro e la classe autore ----- OK
     //-libro: title(string), autors(array di autori), summary(stringa il primo dei summaries, subjects (array di stringhe)), coverImage(stringa-url)
     //-Author: name, yob, yod => calcola età
  //3) traducede il dato grezzo in oggetti
