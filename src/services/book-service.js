@@ -41,13 +41,14 @@ export default class bookService {
     
     }
 
-    // getBookFromId() {
-    //     return this.getBookData()
-    //     .then(books => {
-    //         const book = ...
-    //         return book;
-    //     })
-    // }
+    getBookFromId(id) {
+        return this.getBookData()
+        .then(books => {
+            const book = books.find(book => book.id === id)
+            return book;
+        })
+        .catch(err => console.log(err));
+    }
 
     createBooksFromData(data) {
         const books = [];
