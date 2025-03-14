@@ -1,6 +1,5 @@
-// import Book from "../model/book.js";
-// import Author from "../model/book.js";
-
+import Book from "../model/book.js";
+import Author from "../model/author.js";
 
 export default class bookService {
 
@@ -8,25 +7,38 @@ export default class bookService {
 
     getBookData() {
 
-        const devUrl = "/assets/books.json";
-        const prodUrl = "/web-books/assets/books.json";
+        const DEV_BOOKS_URL = "/assets/books.json";
+        const PROD_BOOKS_URL = "/web-books/assets/books.json";
 
-        const booksPromise = fetch(devUrl)
+        const booksDataPromise = fetch(DEV_BOOKS_URL)
         .then(resp => resp.json())
-        .then(jsonData => {
-            // const books = this.createBooksFromData(jsonData);
-            console.log(jsonData);
+        .then(data => {
+            const books = this.createBooksFromData(data);
+            console.log(books);
         })
-        .catch(error => console.log(error));
-        return booksPromise;
+        .catch(err => console.log(err));
+        return booksDataPromise;
     }
 
     getBooksByTitle() {
         
     }
 
-    getAuthorsName() {
+    getAuthorsName(authorsData) {
+        const authorsList = [];
+        for (let i = 0; i < authorsData.length; i++) {
+            const authorData = authorsData[i];
 
+            const authorName = authorData.name;
+            const yob = authorData.birth_year;
+            const yod = authorData.death_year;
+       
+
+            const newAuthor = new Author(authorName, yob, yod);
+            authorsList.push(newAuthor);            
+        }
+        return authorsList;
+    
     }
 
     getFirstSummary() {
@@ -41,16 +53,23 @@ export default class bookService {
 
     }
 
-    // createBooksFromData(data) {
-    //     const books = [];
-    //     for (let i = 0; i < data.length; i++) {
-    //         const element = data[i];
-    //         // creo l'istanza per ciascun libro
-    //         const newBook = new Book(element.title, element.author, element.subject, element.summary, element.coverImage)
-    //         books.push(newBook);
-    //     }
-    //     return books;
-    // }
+    createBooksFromData(data) {
+        const books = [];
+        for (let i = 0; i < data.length; i++) {
+            const bookData = data[i];
+
+            const id = bookData.id;
+            const title = bookData.title;
+            const authors = this.getAuthorsName(bookData.authors);
+            const summaries = bookData.summeries;
+            const subjects = bookData.subjects;
+            const coverImg = bookData.formats["image/jpeg"];
+
+            const newBook = new Book(id, title, authors, summaries, subjects, coverImg);
+            books.push(newBook);
+        }
+        return books;
+    }
 
     calculateAuthorsAge(yob, yod) {
 

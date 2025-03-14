@@ -1,4 +1,4 @@
-class Author {
+export default class Author {
     constructor(name, yob, yod) {
         this.name = name;
         this.yob = yob;
@@ -16,11 +16,10 @@ class Author {
 		} else {
 			yearOfDeath = this.yod;
 		}
-		return yearOfDeath - this.yob;
+		const age = yearOfDeath - this.yob;
+		return age;
     }
 }
-
-export default Author;
 
 const author1 = new Author('pippo', 1950, 2000)
 console.log(author1)
