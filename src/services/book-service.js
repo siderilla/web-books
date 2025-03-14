@@ -15,6 +15,7 @@ export default class bookService {
         .then(data => {
             const books = this.createBooksFromData(data);
             console.log(books);
+            return books;
         })
         .catch(err => console.log(err));
         return booksDataPromise;

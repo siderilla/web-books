@@ -2,27 +2,43 @@ import bookService from "./services/book-service.js";
 
 const service = new bookService();
 
-service.getBookData()
 
-// function getBooks() {
-//     const booksPromise = service.getBookData();
-//     booksPromise.then(booksData => render(booksData));
-// }
+function getBooks() {
+    const booksPromise = service.getBookData();
+    booksPromise.then(booksData => render(booksData));
+}
 
-// window.getBooks = getBooks;
+window.getBooks = getBooks;
 
-// function render(data) {
-//     const container = document.getElementById('books-container')
-//     container.innerHTML = '';
+function render(booksData) {
+    const container = document.getElementById('books-container')
+    container.innerHTML = '';
 
-//     for (let i = 0; i < booksData.length; i++) {
-//         const element = booksData[i];
+    for (let i = 0; i < booksData.length; i++) {
+        const book = booksData[i];
+        const image = document.createElement('img');
+        image.src = book.coverImage;
+        // document.getElementById().style.backgroundImage = "interpolata per l'url"
+        const bookContainer = document.createElement('div');
+        bookContainer.classList.add('book-card');
 
-//         const bookContainer = document.createElement('div');
+        const titleContainer = createTextElement("h5", 'Titolo: ' + book.title);        
         
+        bookContainer.appendChild(image);
+        bookContainer.appendChild(titleContainer);
+        container.appendChild(bookContainer);
         
-//     }
-// }
+    }
+}
+
+function createTextElement(elementType, text) {
+
+    const element = document.createElement(elementType);
+    const node = document.createTextNode(text);
+    element.appendChild(node);
+    return element;
+
+}
 
 //1) fate la fetch del file json e loggate l'array di libri ----- OK
 //2) create la classe libro e la classe autore ----- OK
