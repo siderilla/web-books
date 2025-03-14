@@ -41,17 +41,13 @@ export default class bookService {
     
     }
 
-    getFirstSummary() {
-        
-    }
-
-    getSubjects() {
-
-    }
-
-    getCoverImage() {
-
-    }
+    // getBookFromId() {
+    //     return this.getBookData()
+    //     .then(books => {
+    //         const book = ...
+    //         return book;
+    //     })
+    // }
 
     createBooksFromData(data) {
         const books = [];
@@ -69,9 +65,5 @@ export default class bookService {
             books.push(newBook);
         }
         return books;
-    }
-
-    calculateAuthorsAge(yob, yod) {
-
     }
 }

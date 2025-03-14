@@ -2,7 +2,6 @@ import bookService from "./services/book-service.js";
 
 const service = new bookService();
 
-
 function getBooks() {
     const booksPromise = service.getBookData();
     booksPromise.then(booksData => render(booksData));
@@ -16,11 +15,14 @@ function render(booksData) {
 
     for (let i = 0; i < booksData.length; i++) {
         const book = booksData[i];
+
         const image = document.createElement('img');
         image.src = book.coverImage;
-        // document.getElementById().style.backgroundImage = "interpolata per l'url"
-        const bookContainer = document.createElement('div');
+        image.classList.add('cover-box');
+
+        const bookContainer = document.createElement('a');
         bookContainer.classList.add('book-card');
+        bookContainer.href = "/detail.html?id=" + book.id;
 
         const titleContainer = createTextElement("h5", 'Titolo: ' + book.title);        
         titleContainer.classList.add('title-box');
@@ -47,4 +49,5 @@ function createTextElement(elementType, text) {
  //3) traducede il dato grezzo in oggetti
  //4) create una visualizzazione di schede libro con i dati disponibili
  //5) mettete un tasto che permetta di mettere in ordine i libri per titolo
+ //6) possibilità di aprire una nuova scheda/pagina contenente i dettagli del libro selezionato
 
