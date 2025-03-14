@@ -5,7 +5,7 @@ export default class Author {
         this.yod = yod;
     }
 
-    getAge(){
+    getAge() {
 		if (this.yob === null) {
 			return 'n/a';
 		}
@@ -21,14 +21,14 @@ export default class Author {
     }
 }
 
-const author1 = new Author('pippo', 1950, 2000)
-console.log(author1)
-console.log(author1.getAge())//50
+// const author1 = new Author('pippo', 1950, 2000)
+// console.log(author1)
+// console.log(author1.getAge())//50
 
-const author2 = new Author('pluto', 1951, null)
-console.log(author2)
-console.log(author2.getAge())//74
+// const author2 = new Author('pluto', 1951, null)
+// console.log(author2)
+// console.log(author2.getAge())//74
 
-const author3 = new Author('paperino', null, null)
-console.log(author3)
-console.log(author3.getAge())//n/a
+// const author3 = new Author('paperino', null, null)
+// console.log(author3)
+// console.log(author3.getAge())//n/a

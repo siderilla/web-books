@@ -33,7 +33,6 @@ export default class bookService {
             const authorName = authorData.name;
             const yob = authorData.birth_year;
             const yod = authorData.death_year;
-       
 
             const newAuthor = new Author(authorName, yob, yod);
             authorsList.push(newAuthor);            
@@ -62,7 +61,7 @@ export default class bookService {
             const id = bookData.id;
             const title = bookData.title;
             const authors = this.getAuthorsName(bookData.authors);
-            const summaries = bookData.summeries;
+            const summaries = bookData.summaries[0];
             const subjects = bookData.subjects;
             const coverImg = bookData.formats["image/jpeg"];
 

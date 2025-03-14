@@ -23,11 +23,12 @@ function render(booksData) {
         bookContainer.classList.add('book-card');
 
         const titleContainer = createTextElement("h5", 'Titolo: ' + book.title);        
-        
+        titleContainer.classList.add('title-box');
+
         bookContainer.appendChild(image);
         bookContainer.appendChild(titleContainer);
         container.appendChild(bookContainer);
-        
+    
     }
 }
 
@@ -37,7 +38,6 @@ function createTextElement(elementType, text) {
     const node = document.createTextNode(text);
     element.appendChild(node);
     return element;
-
 }
 
 //1) fate la fetch del file json e loggate l'array di libri ----- OK
