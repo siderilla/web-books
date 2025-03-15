@@ -5,24 +5,19 @@ export default class bookService {
 
     constructor() {}
 
-    getBookData() {
-
+    async getBookData() {
         const DEV_BOOKS_URL = "/assets/books.json";
         const PROD_BOOKS_URL = "/web-books/assets/books.json";
 
         const booksDataPromise = fetch(DEV_BOOKS_URL)
-        .then(resp => resp.json())
-        .then(data => {
-            const books = this.createBooksFromData(data);
-            console.log(books);
-            return books;
-        })
-        .catch(err => console.log(err));
+            .then(resp => resp.json())
+            .then(data => {
+                const books = this.createBooksFromData(data);
+                console.log(books);
+                return books;
+            })
+            .catch(err => console.log(err));
         return booksDataPromise;
-    }
-
-    getBooksByTitle() {
-        
     }
 
     getAuthorsName(authorsData) {
@@ -38,16 +33,15 @@ export default class bookService {
             authorsList.push(newAuthor);            
         }
         return authorsList;
-    
     }
 
-    getBookFromId(id) {
+    async getBookFromId(id) {
         return this.getBookData()
-        .then(books => {
-            const book = books.find(book => book.id === id)
-            return book;
-        })
-        .catch(err => console.log(err));
+            .then(books => {
+                const book = books.find(book => book.id === id);
+                return book;
+            })
+            .catch(err => console.log(err));
     }
 
     createBooksFromData(data) {

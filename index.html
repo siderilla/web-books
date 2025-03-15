@@ -11,7 +11,6 @@
         <h1>WEB BOOKS</h1>
     </header>
     <main>
-        <button onclick="getBooks()">Give me Books!</button>
         <div id="books-container">
 
         </div>
@@ -23,4 +22,10 @@
 <!-- <script src="./src/model/author.js"></script> -->
 <!-- <script type="module" src="./src/model/book.js"></script> -->
 <script type="module" src="./src/main.js"></script>
+<script type="module">
+        import { getBooks } from './src/main.js';
+        document.addEventListener('DOMContentLoaded', () => {
+        	getBooks();
+        });
+</script>
 </html>

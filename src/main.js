@@ -2,7 +2,7 @@ import bookService from "./services/book-service.js";
 
 const service = new bookService();
 
-function getBooks() {
+export function getBooks() {
     const booksPromise = service.getBookData();
     booksPromise.then(booksData => render(booksData));
 }
@@ -24,7 +24,7 @@ function render(booksData) {
         bookContainer.classList.add('book-card');
         bookContainer.href = "/detail.html?id=" + book.id;
 
-        const titleContainer = createTextElement("h5", 'Titolo: ' + book.title);        
+        const titleContainer = createTextElement("h6", book.title);        
         titleContainer.classList.add('title-box');
 
         bookContainer.appendChild(image);
